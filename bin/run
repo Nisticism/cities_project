@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+require_relative '../lib/cli'
+require 'pry'
 
 # start program running
+# document.querySelectorAll("tbody")[0].querySelectorAll("td")[1].innerText
+
+
+start
