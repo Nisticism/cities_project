@@ -16,6 +16,7 @@ class CLI
     menu
     
     input = gets
+    input.chomp
     if input == '1'
       print_cities
       puts "press any key to continue..."
