@@ -1,11 +1,15 @@
 #!/usr/bin/env ruby
 
+require 'nokogiri'
+require 'open-uri'
+require 'pry'
+
 require_relative '../config/environment'
 require_relative '../lib/cli'
-require 'pry'
+require_relative '../lib/city'
+require_relative '../lib/scraper'
 
 # start program running
 # document.querySelectorAll("tbody")[0].querySelectorAll("td")[1].innerText
 
-
-start
+CLI.new.start
