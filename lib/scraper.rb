@@ -19,7 +19,7 @@ class Scraper
           elsif index == 2
           
             Country.all.each do |country|
-              if city_element.text.strip == country.name
+              if city_element.text.strip.gsub(/[^0-9A-Za-z]/, '') == country.name
                 new_city.country = country
                 country.add_city(new_city)
               end
