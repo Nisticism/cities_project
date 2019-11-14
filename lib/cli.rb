@@ -96,6 +96,7 @@ class CLI
   
   def print_city_descriptions
     City.all.each_with_index do |city, index|
+      puts " "
       puts "#{index + 1}. #{city.name}:  "
       puts " "
       puts "#{city.description}"
