@@ -1,11 +1,7 @@
-
-
-# document.querySelectorAll("tbody")[0].querySelectorAll("td")[1].innerText
-
-
 class CLI 
   
   def scrape
+    puts "Loading..."
     City.clear_all
     Country.clear_all
     Scraper.scrape_cities
@@ -54,9 +50,9 @@ class CLI
     puts "Please choose an option from 1 - 7: "
     puts " "
     puts "1. View a list of all high population cities."
-    puts "2. View list with urls."
-    puts "3. View list with countries."
-    puts "4. View list with populations."
+    puts "2. View a list of cities with urls."
+    puts "3. View a list of cities with their countries."
+    puts "4. View a list of cities with populations."
     puts "5. View a list of all countries with their cities."
     puts "6. View cities with their descriptions."
     puts "7. Exit program"
@@ -71,7 +67,7 @@ class CLI
   
   def print_urls
     City.all.each_with_index do |city, index|
-      puts "#{index + 1}. #{city.name}:  https://wikipedia.org/#{city.url}"
+      puts "#{index + 1}. #{city.name}:  https://wikipedia.org#{city.url}"
     end
   end
   

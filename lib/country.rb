@@ -7,7 +7,6 @@ class Country
   def initialize(name)
     @name = name 
     @cities = []
-    
     @@all << self
   end
   
@@ -21,7 +20,6 @@ class Country
   
   def self.clear_all
     @@all.clear
-    @@all = []
   end
   
 end

@@ -19,12 +19,6 @@ class City
   
   def self.clear_all
     @@all.clear
-    @@all = []
   end
-  
-  
-    
-    
-    
   
 end
