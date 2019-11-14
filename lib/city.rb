@@ -1,6 +1,6 @@
 class City 
   
-  attr_accessor :name, :url, :population, :country
+  attr_accessor :name, :url, :population, :country, :description
   
   @@all = []
   

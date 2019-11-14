@@ -10,7 +10,7 @@ class Scraper
       # start looping through elements in each row
       
       if city.css("td").text != ""
-        new_city = City.new if city.css("td").text != ""
+        new_city = City.new
       
         city.css("td").each_with_index do |city_element, index|
           if index == 1
@@ -49,6 +49,16 @@ class Scraper
     html = open("https://en.wikipedia.org/#{city.url}")
     doc = Nokogiri::HTML(html)
     
+    city_description = doc.css("p")
+    
+    city_description_string
+    city_description.css("p").each_with_index do |paragraph|
+      while index > 2 && index < 6
+        city_description_string += paragraph.text
+      end
+    end
+    
+    city.description = city_description_string
     
   end
   

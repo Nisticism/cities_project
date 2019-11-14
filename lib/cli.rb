@@ -19,6 +19,7 @@ class CLI
     print_urls
     print_countries
     print_populations
+    print_city_descriptions
       
   end
     
@@ -50,6 +51,12 @@ class CLI
   def print_populations
     City.all.each_with_index do |city, index|
       puts "#{index + 1}. #{city.population}"
+    end
+  end
+  
+  def print_city_descriptions
+    City.all.each_with_index do |city, index|
+      puts "#{index + 1}. #{city.description}"
     end
   end
     
