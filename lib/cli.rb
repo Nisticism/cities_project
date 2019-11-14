@@ -10,6 +10,12 @@ class CLI
     Country.clear_all
     Scraper.scrape_cities
   end
+  
+  def await_continue
+    puts "press any key to continue..."
+    STDIN.getch 
+    start
+  end
     
   def start
     
@@ -17,21 +23,24 @@ class CLI
     
     input = gets
     input = input.chomp
-    if input == 1
+    if input == '1'
       print_cities
-      puts "press any key to continue..."
-      STDIN.getch 
-      start
-    elsif input == 2
+      await_continue
+    elsif input == '2'
       print_urls
-    elsif input == 3
+      await_continue
+    elsif input == '3'
       print_countries
+      await_continue
     elsif input == '4'
       print_populations
+      await_continue
     elsif input == '5'
       print_countries_with_cities
+      await_continue
     elsif input == '6'
       print_city_descriptions
+      await_continue
     elsif input == '7'
       exit!
     else
