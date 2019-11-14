@@ -38,6 +38,9 @@ class CLI
       print_city_descriptions
       await_continue
     elsif input == '7'
+      find_city_by_name
+      await_continue
+    elsif input == '8'
       exit!
     else
       puts "Try again. Please enter any number from 1 - 7"
@@ -55,7 +58,8 @@ class CLI
     puts "4. View a list of cities with populations."
     puts "5. View a list of all countries with their cities."
     puts "6. View cities with their descriptions."
-    puts "7. Exit program"
+    puts "7. Find a city by name, and display its population and country."
+    puts "8. Exit program"
   end 
     
     
@@ -100,6 +104,25 @@ class CLI
       puts "#{index + 1}. #{city.name}:  "
       puts " "
       puts "#{city.description}"
+    end
+  end
+
+  def find_city_by_name
+    puts "Please enter a city name:"
+    input = gets 
+    input = input.chomp
+    temp_city = City.find_by_name(input)
+    
+    if temp_city == false 
+      puts "City not found... please try again"
+      puts "press any key to continue..."
+      STDIN.getch 
+      find_city_by_name
+    else
+      puts "City found: #{temp_city.name}"
+      puts "Country: #{temp_city.country}"
+      puts "population: #{temp_city.population}"
+      await_continue
     end
   end
     

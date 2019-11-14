@@ -21,4 +21,13 @@ class City
     @@all.clear
   end
   
+  def self.find_by_name(city_name)
+    @@all.each do |city|
+      if city.name == city_name
+        return city
+      end
+    end
+    false
+  end
+  
 end
