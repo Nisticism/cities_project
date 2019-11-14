@@ -38,6 +38,8 @@ class Scraper
             
           #end element loop
         end
+        
+        scrape_city_details(new_city)
       end
     
     #end row loop
@@ -53,7 +55,7 @@ class Scraper
     
     city_description_string = ""
     city_description.css("p").each_with_index do |paragraph, index|
-      while index > 2 && index < 6
+      while index >= 3 && index <= 4
         city_description_string += paragraph.text
       end
     end
