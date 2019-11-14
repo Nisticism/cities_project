@@ -4,7 +4,7 @@ class City
   
   @@all = []
   
-  def initialize(name, url, population = nil, country = nil)
+  def initialize(name = "", url = "", country = nil, population = nil)
     @name = name 
     @url = url
     @population = population
@@ -19,6 +19,7 @@ class City
   
   def self.clear_all
     @@all.clear
+    @@all = []
   end
   
   

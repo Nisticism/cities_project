@@ -7,31 +7,38 @@ class Scraper
     # start looping through rows
     doc.css("tbody")[0].css("tr").each do |city|
       
-      city_name = ""
-      city_url = ""
-      city_country = ""
-      city_population = ""
-      
       # start looping through elements in each row
-      city.css("td").each_with_index do |city_element, index|
-        if index == 1
-          city_name = city_element.text.split("[")[0]
-          
-          #city_name_array = city_name.split("[")
-          #city_name = city_name_array[0]
-          
-          city_url = city_element.css("a")
-        elsif index == 2 
-          city_country = city_element.text 
-        elsif index == 3
-          city_population = city_element.text
-        else
-        end
-        
-        #end row loop
-      end
       
-      City.new(city_name, city_url, city_country, city_population) if city_name != ""
+      if city.css("td").text != ""
+        new_city = City.new if city.css("td").text != ""
+      
+        city.css("td").each_with_index do |city_element, index|
+          if index == 1
+            new_city.name = city_element.text.split("[")[0].strip
+            new_city.url = city_element.css("a").attribute("href").value
+          elsif index == 2
+          
+            Country.all.each do |country|
+              if city_element.text.strip == country.name
+                new_city.country = country
+                country.add_city(new_city)
+              end
+            end
+            
+            if new_city.country == nil 
+              new_country = Country.new(city_element.text.strip)
+              new_city.country = new_country
+              new_country.add_city(new_city)
+            end
+          elsif index == 3
+            new_city.population = city_element.text.strip
+          else
+            #  Do nothing...
+          end
+            
+          #end element loop
+        end
+      end
     
     #end row loop
     end
@@ -39,6 +46,9 @@ class Scraper
   end
   
   def self.scrape_city_details(city)
+    html = open("https://en.wikipedia.org/#{city.url}")
+    doc = Nokogiri::HTML(html)
+    
     
   end
   
