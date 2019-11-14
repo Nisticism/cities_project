@@ -25,8 +25,8 @@ class Scraper
               end
             end
             
-            if new_city.country == nil 
-              new_country = Country.new(city_element.text.strip)
+            if new_city.country == nil
+              new_country = Country.new(city_element.text.strip.gsub(/[^0-9A-Za-z]/, ''))
               new_city.country = new_country
               new_country.add_city(new_city)
             end

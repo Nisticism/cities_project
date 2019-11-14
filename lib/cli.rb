@@ -71,21 +71,21 @@ class CLI
   
   def print_urls
     City.all.each_with_index do |city, index|
-      puts "#{index + 1}. #{city.name}:  https://wikipedia.org#{city.url}"
+      puts "#{index + 1}. #{city.name}: https://wikipedia.org#{city.url}"
     end
   end
   
   def print_countries
     City.all.each_with_index do |city, index|
       if Country.all.include?(city.country)
-        puts "#{index + 1}. #{city.name}:  #{city.country.name}"
+        puts "#{index + 1}. #{city.name}: #{city.country.name}"
       end
     end
   end
   
   def print_populations
     City.all.each_with_index do |city, index|
-      puts "#{index + 1}. #{city.name}:  #{city.population}"
+      puts "#{index + 1}. #{city.name}: #{city.population}"
     end
   end
   
@@ -106,6 +106,25 @@ class CLI
       puts "#{city.description}"
     end
   end
+  
+  def search_again_menu
+    puts "Options:"
+    puts "1. Search again"
+    puts "2. Back to main menu"
+    puts "3. Exit program"
+    input = gets
+    input = input.chomp
+    if input == '1'
+      find_city_by_name
+    elsif input == '2'
+      start
+    elsif input == '3'
+      exit!
+    else 
+      puts "Try again.  Please enter any number from 1 - 3."
+      search_again_menu
+    end
+  end
 
   def find_city_by_name
     puts "Please enter a city name:"
@@ -114,15 +133,13 @@ class CLI
     temp_city = City.find_by_name(input)
     
     if temp_city == false 
-      puts "City not found... please try again"
-      puts "press any key to continue..."
-      STDIN.getch 
-      find_city_by_name
+      puts "City \'#{input}\' not found.\n"
+      search_again_menu
     else
       puts "City found: #{temp_city.name}"
-      puts "Country: #{temp_city.country}"
-      puts "population: #{temp_city.population}"
-      await_continue
+      puts "Country: #{temp_city.country.name}"
+      puts "population: #{temp_city.population}\n"
+      search_again_menu
     end
   end
     
