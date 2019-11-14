@@ -1,6 +1,6 @@
 This simply program is a CLI that allows users to search for populous cities in Europe.
 
-It scrapes https://wikipedia.org and various pages within for all relevant information.
+It scrapes https://en.wikipedia.org/wiki/List_of_European_cities_by_population_within_city_limits and various pages within for all relevant information.
 
 INSTALLATION:
 
@@ -17,6 +17,7 @@ LICENSE INFORMATION:
 Link: https://opensource.org/licenses/MIT
 
 Copyright 2019 Hans Foster
+
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
 documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
 the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
