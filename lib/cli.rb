@@ -4,24 +4,42 @@
 
 
 class CLI 
-  def start 
-    puts "Welcome to City Scraper"
-    puts "These are the most populous cities in Europe:"
-    puts " "
-    puts "---------------------------------------------"
-    puts " "
+  def start
+    
     City.clear_all
     Country.clear_all
     Scraper.scrape_cities
-    #binding.pry
-      
-    print_cities
-    print_urls
-    print_countries
-    print_populations
-    print_countries_with_cities
-    print_city_descriptions
-      
+    
+    puts "Welcome to City Scraper for High Population (Over 1,000,000 People) European Cities"
+    puts "Please choose an option from 1 - 7: "
+    puts " "
+    puts "1. View a list of all high population cities."
+    puts "2. View list with urls."
+    puts "3. View list with countries."
+    puts "4. View list with populations."
+    puts "5. View a list of all countries with their cities."
+    puts "6. View cities with their descriptions."
+    puts "7. Exit program"
+    
+    input = gets
+    if input == 1
+      print_cities
+    elsif input == 2 
+      print_urls
+    elsif input == 3
+      print_countries
+    elsif input == 4
+      print_populations
+    elsif input == 5
+      print_countries_with_cities
+    elsif input == 6
+      print_city_descriptions
+    elsif input == 7
+      exit!
+    else
+      puts "Try again. Please a number from 1 - 7"
+      start
+    end
   end
     
   def menu
@@ -37,21 +55,21 @@ class CLI
   
   def print_urls
     City.all.each_with_index do |city, index|
-      puts "#{index + 1}. #{city.url}"
+      puts "#{index + 1}. #{city.name}:  https://wikipedia.org/#{city.url}"
     end
   end
   
   def print_countries
     City.all.each_with_index do |city, index|
       if Country.all.include?(city.country)
-        puts "#{index + 1}. #{city.country.name}"
+        puts "#{index + 1}. #{city.name}:  #{city.country.name}"
       end
     end
   end
   
   def print_populations
     City.all.each_with_index do |city, index|
-      puts "#{index + 1}. #{city.population}"
+      puts "#{index + 1}. #{city.name}:  #{city.population}"
     end
   end
   
@@ -66,7 +84,9 @@ class CLI
   
   def print_city_descriptions
     City.all.each_with_index do |city, index|
-      puts "#{index + 1}. #{city.description}"
+      puts "#{index + 1}. #{city.name}:  "
+      puts " "
+      puts "#{city.description}"
     end
   end
     
