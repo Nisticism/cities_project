@@ -55,7 +55,7 @@ class Scraper
     
     city_description_string = ""
     city_description.css("p").each_with_index do |paragraph, index|
-      while index >= 3 && index <= 4
+      if index == 3 || index == 4
         city_description_string += paragraph.text
       end
     end
