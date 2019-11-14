@@ -16,15 +16,15 @@ class CLI
     menu
     
     input = gets
-    input.chomp
-    if input == '1'
+    input = input.chomp
+    if input == 1
       print_cities
       puts "press any key to continue..."
       STDIN.getch 
       start
-    elsif input == '2' 
+    elsif input == 2
       print_urls
-    elsif input == '3'
+    elsif input == 3
       print_countries
     elsif input == '4'
       print_populations
