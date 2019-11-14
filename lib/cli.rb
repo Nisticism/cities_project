@@ -4,26 +4,26 @@
 
 
 class CLI 
-  def start
-    
+  
+  def scrape
     City.clear_all
     Country.clear_all
     Scraper.scrape_cities
+  end
     
-    puts "Welcome to City Scraper for High Population (Over 1,000,000 People) European Cities"
-    puts "Please choose an option from 1 - 7: "
-    puts " "
-    puts "1. View a list of all high population cities."
-    puts "2. View list with urls."
-    puts "3. View list with countries."
-    puts "4. View list with populations."
-    puts "5. View a list of all countries with their cities."
-    puts "6. View cities with their descriptions."
-    puts "7. Exit program"
+  def start
+    
+    menu
     
     input = gets
+    if input == /[0-9]/
+      input = input.to_i
+    end
     if input == 1
       print_cities
+      puts "press any key to continue..."
+      STDIN.getch 
+      start
     elsif input == 2 
       print_urls
     elsif input == 3
@@ -37,13 +37,22 @@ class CLI
     elsif input == 7
       exit!
     else
-      puts "Try again. Please a number from 1 - 7"
+      puts "Try again. Please enter any number from 1 - 7"
       start
     end
   end
     
   def menu
-    
+    puts "Welcome to City Scraper for High Population (Over 1,000,000 People) European Cities"
+    puts "Please choose an option from 1 - 7: "
+    puts " "
+    puts "1. View a list of all high population cities."
+    puts "2. View list with urls."
+    puts "3. View list with countries."
+    puts "4. View list with populations."
+    puts "5. View a list of all countries with their cities."
+    puts "6. View cities with their descriptions."
+    puts "7. Exit program"
   end 
     
     
