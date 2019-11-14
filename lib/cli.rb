@@ -41,7 +41,7 @@ class CLI
   end
     
   def menu
-    puts "Welcome to City Scraper for High Population (Over 1,000,000 People) European Cities"
+    puts "Welcome to City Scraper for European Cities with > 1,000,000 People"
     puts "Please choose an option from 1 - 7: "
     puts " "
     puts "1. View a list of all high population cities."
