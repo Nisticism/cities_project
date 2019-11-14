@@ -51,8 +51,8 @@ class Scraper
     
     city_description = doc.css("p")
     
-    city_description_string
-    city_description.css("p").each_with_index do |paragraph|
+    city_description_string = ""
+    city_description.css("p").each_with_index do |paragraph, index|
       while index > 2 && index < 6
         city_description_string += paragraph.text
       end
