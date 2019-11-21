@@ -2,8 +2,6 @@ class CLI
   
   def scrape
     puts "Loading..."
-    City.clear_all
-    Country.clear_all
     Scraper.scrape_cities
   end
   
@@ -20,7 +18,7 @@ class CLI
     input = gets
     input = input.chomp
     if input == '1'
-      print_cities
+      print_cities(City.all)
       await_continue
     elsif input == '2'
       print_urls
@@ -41,6 +39,9 @@ class CLI
       find_city_by_name
       await_continue
     elsif input == '8'
+      print_cities(City.alphabetize)
+      await_continue
+    elsif input == '9'
       exit!
     else
       puts "Try again. Please enter any number from 1 - 7"
@@ -59,12 +60,12 @@ class CLI
     puts "5. View a list of all countries with their cities."
     puts "6. View cities with their descriptions."
     puts "7. Find a city by name, and display its population and country."
-    puts "8. Exit program"
+    puts "8. View alphabetized list of cities."
+    puts "9. Exit program"
   end 
     
-    
-  def print_cities
-    City.all.each_with_index do |city, index|
+  def print_cities(all_cities)
+    all_cities.each_with_index do |city, index|
       puts "#{index + 1}. #{city.name}"
     end
   end
@@ -142,6 +143,5 @@ class CLI
       search_again_menu
     end
   end
-    
 end
 

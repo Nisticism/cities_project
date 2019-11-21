@@ -17,6 +17,12 @@ class City
     @@all
   end
   
+  def self.alphabetize
+    @@all.sort_by do |city|
+      city.name
+    end
+  end
+  
   def self.clear_all
     @@all.clear
   end
